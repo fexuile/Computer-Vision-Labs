@@ -12,13 +12,17 @@ def padding(img, padding_size, type):
             padding_img: array(float)
     """
 
+    width = img.shape[0]
+    height = img.shape[1]
+
     if type=="zeroPadding":
-
-
+        padding_img = np.zeros((width+2*padding_size, height+2*padding_size))
+        padding_img[padding_size:width+padding_size, padding_size:height+padding_size] = img
         return padding_img
     elif type=="replicatePadding":
-
-
+        padding_img = np.zeros((width+2*padding_size, height+2*padding_size))
+        padding_img[padding_size:width+padding_size, padding_size:height+padding_size] = img
+        padding_img[0:padding_size, padding_size:height+padding_size] = img[0,:]
         return padding_img
 
 
@@ -31,8 +35,8 @@ def convol_with_Toeplitz_matrix(img, kernel):
         Outputs:
             output: array(float)
     """
-    #zero padding
-    padding_img = 
+    # zero padding
+    img_padding = padding(img, , "zeroPadding")
 
     #build the Toeplitz matrix and compute convolution
     
@@ -90,24 +94,24 @@ if __name__=="__main__":
     np.savetxt("result/HM1_Convolve_replicate_pad.txt",replicate_pad)
 
 
-    #task 2: convolution with Toeplitz matrix
+    # task 2: convolution with Toeplitz matrix
     result_1 = convol_with_Toeplitz_matrix(input_array, input_kernel)
     np.savetxt("result/HM1_Convolve_result_1.txt", result_1)
 
-    #task 3: convolution with sliding-window
-    result_2 = convolve(input_array, input_kernel)
-    np.savetxt("result/HM1_Convolve_result_2.txt", result_2)
+    # #task 3: convolution with sliding-window
+    # result_2 = convolve(input_array, input_kernel)
+    # np.savetxt("result/HM1_Convolve_result_2.txt", result_2)
 
-    #task 4/5: Gaussian filter and Sobel filter
-    input_img = read_img("lenna.png")/255
+    # #task 4/5: Gaussian filter and Sobel filter
+    # input_img = read_img("lenna.png")/255
 
-    img_gadient_x = Sobel_filter_x(input_img)
-    img_gadient_y = Sobel_filter_y(input_img)
-    img_blur = Gaussian_filter(input_img)
+    # img_gadient_x = Sobel_filter_x(input_img)
+    # img_gadient_y = Sobel_filter_y(input_img)
+    # img_blur = Gaussian_filter(input_img)
 
-    write_img("result/HM1_Convolve_img_gadient_x.png", img_gadient_x*255)
-    write_img("result/HM1_Convolve_img_gadient_y.png", img_gadient_y*255)
-    write_img("result/HM1_Convolve_img_blur.png", img_blur*255)
+    # write_img("result/HM1_Convolve_img_gadient_x.png", img_gadient_x*255)
+    # write_img("result/HM1_Convolve_img_gadient_y.png", img_gadient_y*255)
+    # write_img("result/HM1_Convolve_img_blur.png", img_blur*255)
 
 
 
