@@ -21,8 +21,8 @@ def corner_response_function(input_img, window_size, alpha, threshold):
     # you can use several functions from HM1_Convolve to get 
     # I_xx, I_yy, I_xy as well as the convolution result.
     # for detials of corner_response_function, please refer to the slides.
-
-
+    corner_list = np.array([])
+                
     return corner_list # array, each row contains information about one corner, namely (index of row, index of col, theta)
 
 
