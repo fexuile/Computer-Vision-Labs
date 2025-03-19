@@ -65,18 +65,18 @@ def convolve(img, kernel):
             output: array(float)
     """
     #build the sliding-window convolution here
-    img_size = img.shape[0]
-    kernel_size = kernel.shape[0]
-    output_size = img_size - kernel_size + 1
-    row_indices = np.arange(img_size - kernel_size + 1)[:, None] + np.arange(kernel_size)
-    col_indices = np.arange(img_size - kernel_size + 1)[:, None] + np.arange(kernel_size)
+    w = img.shape[0]; h = img.shape[1]
+    k = kernel.shape[0]; l = kernel.shape[1]
     
-    windows = img[row_indices[:, None, :, None], col_indices[None, :, None, :]]
-    slide_matrix = windows.reshape(output_size * output_size, kernel_size * kernel_size)
+    i = np.arange(w - k + 1)[:, None, None, None]
+    j = np.arange(h - l + 1)[:, None, None]
+    ii = np.arange(k)[None, None, :, None]
+    jj = np.arange(l)[None, None, None, :]
 
-    output = np.dot(slide_matrix, kernel.ravel()).reshape(output_size, output_size)
-    
-    return output
+    window = img[i + ii, j + jj]
+
+    output = np.dot(window.reshape((w-k+1)*(h-l+1), k*l), kernel.flatten())
+    return output.reshape(w-k+1, h-l+1)
 
 def Gaussian_filter(img):
     padding_img = padding(img, 1, "replicatePadding")
