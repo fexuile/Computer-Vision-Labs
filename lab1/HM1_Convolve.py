@@ -118,7 +118,7 @@ if __name__=="__main__":
     np.savetxt("result/HM1_Convolve_result_1.txt", result_1)
 
     # #task 3: convolution with sliding-window
-    result_2 = convolve(padding(input_array, 1, "zeroPadding"), input_kernel)
+    result_2 = convolve(input_array, input_kernel)
     np.savetxt("result/HM1_Convolve_result_2.txt", result_2)
 
     # #task 4/5: Gaussian filter and Sobel filter
