@@ -21,14 +21,11 @@ def corner_response_function(input_img, window_size, alpha, threshold):
     # you can use several functions from HM1_Convolve to get 
     # I_xx, I_yy, I_xy as well as the convolution result.
     # for detials of corner_response_function, please refer to the slides.
-    # write_img("result/HM1_HarrisCorner_input_img.png", input_img * 255)
+
     blur_img = Gaussian_filter(input_img)
-    # write_img("result/HM1_HarrisCorner_blur_img.png", blur_img * 255)
 
     x_grad = Sobel_filter_x(blur_img)
     y_grad = Sobel_filter_y(blur_img)
-    # write_img("result/HM1_HarrisCorner_x_grad.png", x_grad * 255)
-    # write_img("result/HM1_HarrisCorner_y_grad.png", y_grad * 255)
     I_xx = x_grad * x_grad
     I_yy = y_grad * y_grad
     I_xy = x_grad * y_grad

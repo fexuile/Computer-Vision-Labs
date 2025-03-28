@@ -63,10 +63,8 @@ def hysteresis_thresholding(img) :
             output: array(float)
     """
     #you can adjust the parameters to fit your own implementation 
-    low_ratio = 0.4375
-    # low_ratio = 0.43
-    # high_ratio = 1
-    high_ratio = 1.065
+    low_ratio = 1
+    high_ratio = 2
     sum_img, total = 0, 0
     for i in range(img.shape[0]):
         for j in range(img.shape[1]):
@@ -105,12 +103,10 @@ if __name__=="__main__":
 
     #Compute the magnitude and the direction of gradient
     magnitude_grad, direction_grad = compute_gradient_magnitude_direction(x_grad, y_grad)
-    # write_img("result/HM1_Canny_magnitude.png", magnitude_grad*255)
-    # write_img("result/HM1_Canny_direction.png", direction_grad*255)
 
     #NMS
     NMS_output = non_maximal_suppressor(magnitude_grad, direction_grad)
-    # write_img("result/HM1_Canny_NMS.png", NMS_output*255)
+    
     #Edge linking with hysteresis
     output_img = hysteresis_thresholding(NMS_output)
     

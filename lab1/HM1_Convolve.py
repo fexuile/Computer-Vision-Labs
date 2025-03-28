@@ -104,7 +104,7 @@ if __name__=="__main__":
     input_array=np.random.rand(6,6)
     input_kernel=np.random.rand(3,3)
 
-    # input_array = np.array([])
+
     # task1: padding
     zero_pad =  padding(input_array,1,"zeroPadding")
     np.savetxt("result/HM1_Convolve_zero_pad.txt",zero_pad)
@@ -113,15 +113,15 @@ if __name__=="__main__":
     np.savetxt("result/HM1_Convolve_replicate_pad.txt",replicate_pad)
 
 
-    # task 2: convolution with Toeplitz matrix
+    #task 2: convolution with Toeplitz matrix
     result_1 = convol_with_Toeplitz_matrix(input_array, input_kernel)
     np.savetxt("result/HM1_Convolve_result_1.txt", result_1)
 
-    # #task 3: convolution with sliding-window
+    #task 3: convolution with sliding-window
     result_2 = convolve(input_array, input_kernel)
     np.savetxt("result/HM1_Convolve_result_2.txt", result_2)
 
-    # #task 4/5: Gaussian filter and Sobel filter
+    #task 4/5: Gaussian filter and Sobel filter
     input_img = read_img("lenna.png")/255
 
     img_gadient_x = Sobel_filter_x(input_img)
@@ -131,3 +131,4 @@ if __name__=="__main__":
     write_img("result/HM1_Convolve_img_gadient_x.png", img_gadient_x*255)
     write_img("result/HM1_Convolve_img_gadient_y.png", img_gadient_y*255)
     write_img("result/HM1_Convolve_img_blur.png", img_blur*255)
+
