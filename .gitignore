@@ -5,3 +5,8 @@ lab2/cifar-10/logs
 lab2/experiments
 lab2/mnist_subset
 lab2/datasets
+
+lab4/PointNet/data
+lab4/PointNet/*.zip
+lab4/MaskRCNN/*.pth
+lab4/RNN/data
